@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Canteen List</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/canteen_admin_list.css' %}">
+</head>
+<body>
+    <h2>Canteen List</h2>
+    <ul>
+        {% for canteen in canteens %}
+            <li>
+                <a href="{% url 'canteen_orders' canteen_id=canteen.id %}">{{ canteen.canteen_name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

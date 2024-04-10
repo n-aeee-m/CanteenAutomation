@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--bootstrap cdn-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Icon Font Stylesheet -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+   <!--font awesome cdn-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!--custom css-->
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="container-fluid">
+    <div class="row topbar" style="padding: 5px 0;">
+      <div class="col-sm-11">
+        <span class="logo">CANTEEN MANAGEMENT</span>
+      </div>
+
+      <div class="col-sm-1">
+        <a href="{% url 'logoutadmin' %}"><button class="logout"><i class="fa-solid fa-right-from-bracket" style="font-size:16px"></i>Logout</button></a>
+      </div>
+
+
+    </div>
+  </div>
+
+
+  <!--nav bar-->
+  <nav class="navbar">
+    <div class="navbar-icons">
+      <div class="nav-icon">
+        <button><a href="{% url 'admin_canteen' %}"><i class="fa-solid fa-utensils"></i></a>
+            <span>Canteen</span>
+        </button>
+      </div>
+      <div class="nav-icon">
+        <button><a href="{% url 'admin_staff' %}"><i class="fa-solid fa-chalkboard-user"></i></a>
+            <span>Staff</span>
+        </button>
+      </div>
+      <div class="nav-icon">
+        <button><a href="{% url 'admin_student' %}"><i class="fa-brands fa-google-scholar"></i></a>
+            <span>Students</span>
+        </button>
+      </div>
+      <div class="nav-icon">
+        <button><a href="{% url 'admin_payment' %}"><i class="fa-solid fa-credit-card"></i></a>
+            <span>Payments</span>
+        </button>
+      </div>
+    </div>
+
+  </nav>
+  {% block content %}
+  {% endblock %}
+
+
+
+
+
+
+  <!-- Add Bootstrap and Font Awesome CDNs -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://kit.fontawesome.com/your-font-awesome-kit.js" crossorigin="anonymous"></script>
+<!--  <script src="{% static 'js/script.js' %}"></script>-->
+
+</body>
+</html>

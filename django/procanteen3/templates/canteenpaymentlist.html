@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Canteen List</title>
+</head>
+<body>
+    <h2>Canteen List</h2>
+    <ul>
+        {% for canteen in canteens %}
+            <li>
+                <a href="{% url 'canteen_orders' canteen_id=canteen.id %}">{{ canteen.canteen_name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

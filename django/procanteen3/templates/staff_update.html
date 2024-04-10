@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+{% block content %}
+    <style>
+       body{
+        display: flex;
+        justify-content: center;
+        background-color: #e6e2e2;
+       }
+        .form1 {
+  margin-top: 169px;
+  margin-right: 560px;
+  background-color: #fff;
+  border-radius: 20px;
+  box-sizing: border-box;
+  height:auto;
+  padding: 20px;
+  width: 420px;
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.7);
+}
+
+.title {
+  color: #000;
+  font-family: sans-serif;
+  font-size: 26px;
+  font-weight: 600;
+  margin-top: 30px;
+}
+
+.subtitle {
+  color: #000;
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.input-container {
+  height: 50px;
+  position: relative;
+  width: 100%;
+  margin-top: 30px;
+
+}
+
+.input {
+  background-color: #eee;
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: #1a1919;
+  font-size: 18px;
+  height: 100%;
+  outline: 0;
+  padding: 4px 20px 0;
+  width: 100%;
+}
+
+.submit {
+  border-radius: 0.25rem;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  border-color: #007bff;
+  background-color: #033067;
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
+  cursor: pointer;
+  font-size: 18px;
+  height: 50px;
+  margin-top: 38px;
+  text-align: center;
+  width: 100%;
+}
+
+.submit:hover {
+  background-color: rgb(10, 196, 238);;
+  color: rgb(232, 228, 228);
+}
+    </style>
+<form method="post" id="update-form">
+        <div class="form1" >
+            {% csrf_token %}
+            <div class="title">Canteen Management</div>
+            <div class="subtitle">Staff Updation form</div>
+
+            <div class="input-container  ">
+              <input placeholder="Staff Id" type="text" class="input" id="staff_id" name="staff_id" value="{{ form.instance.staff_id }}" required>
+            </div>
+
+            <div class="input-container ic">
+              <input placeholder="Name" type="text" class="input" id="staff_name" name="staff_name" value="{{ form.instance.staff_name }}" required>
+            </div>
+            <div class="input-container ic">
+              <input placeholder="Place" type="text" class="input" id="staff_place" name="staff_place" value="{{ form.instance.staff_place }}" required>
+            </div>
+                                    <div class="input-container  ">
+                <input placeholder="Phone No" type="text" class="input" id="custom_phoneno" name="{{ form.custom_phoneno.name }}" value="{{ form.instance.user.phoneno}}">
+              </div>
+<!--            <div class="input-container  ">-->
+<!--                <input placeholder="Username" type="text" class="input" id="custom_username" name="{{ form.custom_username.name }}" required>-->
+<!--              </div>-->
+
+<!--            <div class="input-container ic2">-->
+<!--              <input placeholder="Email" type="text" class="input" id="custom_email" name="{{ form.custom_email.name }}" required>-->
+<!--            </div>-->
+            <br>
+         {{ form.staff_id.errors }} {# Display errors for student_admno #}
+        <br>
+        {{ form.staff_name.errors }} {# Display errors for name #}
+        <br>
+        {{ form.staff_place.errors }} {# Display errors for name #}
+        <br>
+                                          {{ form.custom_phoneno.errors }} {# Display errors for custom_phoneno #}
+        <br>
+
+<!--                    <br>-->
+<!--        {{ form.custom_username.errors }} {# Display errors for custom_username #}-->
+<!--        <br>-->
+<!--        {{ form.custom_email.errors }} {# Display errors for custom_email #}-->
+<!--        <br>-->
+            <a href="{% url 'admin_staff' %}"><button class="submit" type="button">Back</button></a>
+            <button class="submit" id="submit-btn" type="submit">submit</button>
+
+          </div>
+    </form>
+<script>
+    document.getElementById("submit-btn").addEventListener("click", function() {
+        document.getElementById("update-form").submit();
+        // Display alert after form submission
+        alert("Updated successfully");
+        // Redirect to admin staff page
+        window.location.href = "{% url 'admin_staff' %}";
+    });
+</script>
+{% endblock %}

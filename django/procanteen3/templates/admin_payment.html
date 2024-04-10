@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="main-body">
+        <!-- contents here -->
+        <div class="dtls">
+            <div class="details-table">
+                <h2>Order Details</h2>
+                <table id="orderTable" class="orderTable">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer ID</th>
+                            <th>Order Status</th>
+                            <th>Total Price</th>
+                            <th>Payment Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for payment in payments %}
+                        <tr>
+                            <td>{{ payment.order_id }}</td>
+                            <td>{{ payment.user_id }}</td>
+                            <td>{{ payment.order_status }}</td>
+                            <td>{{ payment.total_price }}</td>
+                            <td>{{ payment.payment }}</td>
+                        </tr>
+                        {% endfor %}
+                        <!-- Add more rows as needed -->
+
+                    </tbody>
+                </table>
+            </div>
+            <!-- details-table ends -->
+        </div>
+        <!-- dtls div ends -->
+    </div>
+    <!-- main-body div ends -->
+{% endblock %}

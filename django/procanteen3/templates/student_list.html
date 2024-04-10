@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student List</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/student_list.css' %}">
+    <style>
+
+    </style>
+</head>
+<body>
+    <h2>Student List</h2>
+    <ul>
+        {% for student in students %}
+            <li>
+                 {{ student.student_admno }} - {{ student.name }} -{{ student.student_place }} - {{ student.user.email }}
+                <a href="{% url 'student_update' pk=student.pk %}">Update</a>
+                <a href="{% url 'student_delete' pk=student.pk %}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'student_register' %}">Register</a>
+    <a href="{% url 'admin_dashboard' %}">Home</a>
+</body>
+</html>

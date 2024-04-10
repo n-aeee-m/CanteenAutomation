@@ -1,0 +1,28 @@
+/* styles.css */
+
+body {
+    background-color: #f0f0f0; /* Light gray background */
+    font-family: Arial, sans-serif;
+}
+
+h2 {
+    color: #008000; /* Green color for the heading */
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: #008000; /* Green color for links */
+}
+
+a:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,33 @@
+this is how data is entered for the below code in json format
+{
+  "key": "2001-12-12",
+  "value": [
+    {
+      "key": "itemprice",
+      "value": 2
+    },
+    {
+      "key": "itemquantity",
+      "value": 24
+    }
+  ]
+}
+
+{
+  "order_date": "2001-12-12",
+  "order_time": "09:30:00",
+  "order_id": 52,
+  "user": 4,
+  "mcanteen_id": 2,
+  "total_price": 25,
+  "payment": "paid",
+  "order_status": "undelivered",
+  "orderitem": [
+    {
+      "itemid": 1,
+      "itemprice": 2,
+      "itemcount": 15,
+      "subtotal": 30,
+      "itemImage": null,
+      "itemname": "biriyani"
+    },

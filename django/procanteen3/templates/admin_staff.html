@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="main-body">
+  <!-- contents here -->
+  <div class="dtls">
+    <div class="table">
+      <h2 class="table-heading">Staff</h2>
+
+      <table id="Table">
+        <thead>
+          <tr>
+            <th>Staff Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone No</th>
+            <th>Place</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for staff in staffs %}
+            <tr class="table-row" data-pk="{{ staff.pk }}">
+              <td>{{ staff.staff_id }}</td>
+              <td>{{ staff.staff_name }}</td>
+              <td>{{ staff.user.email }}</td>
+              <td>{{ staff.user.phoneno }}</td>
+              <td>{{ staff.staff_place }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <button class="floating-button"><a href="{% url 'staff_register' %}"><span>&#43;</span><br>Add</a></button>
+
+    </div>
+    <!--details column-->
+    <div class="details">
+      <div class="card" id="detailsCard">
+        <h2 class="card-h2">Details</h2>
+        <!-- Details card content will be dynamically updated using JavaScript -->
+      </div>
+    </div>
+  </div>
+  <!-- content div ends -->
+ <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var table = document.getElementById('Table');
+        var detailsCard = document.getElementById('detailsCard');
+        var rows = table.getElementsByTagName('tr');
+        var labels = table.getElementsByTagName('th');
+
+        for (var i = 0; i < rows.length; i++) {
+            rows[i].addEventListener('click', function (event) {
+                for (var j = 0; j < rows.length; j++) {
+                    rows[j].classList.remove('selected');
+                }
+
+                this.classList.add('selected');
+
+                var cells = this.getElementsByTagName('td');
+                var pk = this.getAttribute('data-pk');
+
+                detailsCard.innerHTML = `
+                    <div class="card-content">
+                        <p><strong>${labels[0].innerText}</strong> ${cells[0].innerText}</p>
+                        <p><strong>${labels[1].innerText}</strong> ${cells[1].innerText}</p>
+                        <p><strong>${labels[2].innerText}</strong> ${cells[2].innerText}</p>
+                        <p><strong>${labels[3].innerText}</strong> ${cells[3].innerText}</p>
+                        <p><strong>${labels[4].innerText}</strong> ${cells[4].innerText}</p>
+                    </div>
+                    <div class="buttons">
+                        <button class="edit-btn" data-pk="${pk}" onclick="editStaff(${pk})">Edit</button>
+                        <button class="delete-btn" data-pk="${pk}" onclick="deleteStaff(${pk})">Delete</button>
+                    </div>
+                `;
+            });
+        }
+    });
+
+    function editStaff(pk) {
+        window.location.href = `/staff/${pk}/update/`;
+    }
+
+    function deleteStaff(pk) {
+        window.location.href = `/staff/${pk}/delete/`;
+    }
+</script>
+
+
+{% endblock %}

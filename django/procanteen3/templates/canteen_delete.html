@@ -1,0 +1,17 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Canteen Detail</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/canteen_delete.css' %}">
+</head>
+<body>
+    <h2>Confirm Deletion</h2>
+    <p>Are you sure you want to delete ?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Yes, delete</button>
+    </form>
+    <a href="{% url 'admin_canteen' %}">Cancel</a>
+</body>
+</html>
